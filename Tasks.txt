@@ -1,0 +1,28 @@
+Pending-
+    Aug-> 24,30,31
+    2516, 2406, 1942, 1590, 1497, 380, 641, 731, 2707, 3011
+
+Practise-
+    53. Maximum Subarray
+    152. Maximum Product Subarray
+    300. Largest Increasing Subsequence
+    560. Subarray Sum Equal K
+    41. First Missing Positive
+
+Important-
+    862. Shortest Subarray With Sum Atleast K
+    918. Maximum Sum Circular Subarray
+    2577. Minimum Time To Visit A Cell In Grid
+
+Algorithms-
+    KMP, Robin Karp
+    Segment, Fenvick Tree
+    Bitmask
+
+Try-
+    Minimum Sum Path
+    Minimum Jumps
+
+Doubt-
+Shortest Path in DAG vs Dijkstra's Algorithm
+
