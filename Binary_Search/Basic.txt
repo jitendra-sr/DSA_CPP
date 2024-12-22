@@ -1,0 +1,18 @@
+|| SELECTION OF THE TYPE OF BINARY SEARCH TO APPLY ||
+
+1. st<=end | st=mid+1 | end=mid-1
+# When the stopping condition (at mid) is specific and you are sure that
+if answer can be find it would definitely at mid, then you don't have to
+shrink the search space till main condition (st<=end) holds.
+
+2. st<end | st=mid+1 | end=mid
+# When you don't know whether the answer can be lie on stopping condition
+or the stopping condition is not specific, then you have to shrink the
+search space till main condition (st<end) holds and then reach a point
+(most likely st) where there is a possibility of getting result.
+
+
+|| FINDING INDEX OF MATRIX ||
+
+1. If i,j and R,C are given then ind=C*i+j  -> 2D to Linear
+2. if ind then i=ind/C and j=ind%C  -> Linear to 2D
