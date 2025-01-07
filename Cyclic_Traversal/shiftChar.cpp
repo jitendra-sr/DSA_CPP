@@ -2,8 +2,14 @@
 using namespace std;
 
 char shiftChar(char ch, int k) {
+
+    // To handle negative k value efficiently.
+    bool sign=(k<0)?false:true;
+    int shift=abs(k)%26;
+    if(!sign) shift=-shift;
+
     if (ch >= 'a' && ch <= 'z') {
-        return 'a' + (ch - 'a' + k + 26) % 26;
+        return 'a' + (ch - 'a' + shift + 26) % 26;
     }
     return ch;
 }
