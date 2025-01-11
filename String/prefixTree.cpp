@@ -17,39 +17,33 @@ public:
     
     void insert(string word) {
         TrieNode* curr=root;
-        int i=0;
-        while(i<word.size()){
-            int index=word[i]-'a';
+        for(char ch:word){
+            int index=ch-'a';
             if(!curr->children[index]){
-                TrieNode* child=new TrieNode(word[i]);
+                TrieNode* child=new TrieNode(ch);
                 curr->children[index]=child;
             }
             curr=curr->children[index];
-            i++;
         }
         curr->isTerminal=true;
     }
     
     bool search(string word) {
         TrieNode* curr=root;
-        int i=0;
-        while(i<word.size()){
-            int index=word[i]-'a';
+        for(char ch:word){
+            int index=ch-'a';
             if(!curr->children[index]) return false;
             curr=curr->children[index];
-            i++;
         }
         return curr->isTerminal;
     }
     
     bool startsWith(string prefix) {
         TrieNode* curr=root;
-        int i=0;
-        while(i<prefix.size()){
-            int index=prefix[i]-'a';
+        for(char ch:word){
+            int index=ch-'a';
             if(!curr->children[index]) return false;
             curr=curr->children[index];
-            i++;
         }
         return true;
     }
