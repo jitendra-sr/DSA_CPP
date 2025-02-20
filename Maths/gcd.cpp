@@ -4,7 +4,7 @@ int gcd(int a, int b) {
     if(a > b) swap(a,b);
     while (a) {
         int r = b % a;
-        b = a
+        b = a;
         a = r;
     }
     return b;
