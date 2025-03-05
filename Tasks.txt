@@ -15,7 +15,7 @@ Important-
     2577. Minimum Time To Visit A Cell In Grid
 
 Algorithms-
-    KMP, Robin Karp
+    KMP, Robin Karp, Rolling Hash
     Segment, Fenvick Tree
     Bitmask
 
