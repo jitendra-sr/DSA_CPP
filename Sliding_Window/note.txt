@@ -1,0 +1,16 @@
+# Basic Approach for Sliding Window
+
+    1. First find the solution by generating all subarray in O(N^2).
+    2. Add best checks to prune the nested loop.
+    3. Finally analyse how window can be used instead of outer loop and keep or modify the inner loop and checks.
+
+
+# Typically sliding window technique takes O(2N) ie. Two passes.
+To reduce it to O(N), we can use if condition instead of inner while loop with these techniques:
+
+    1. store indexes and whenever inner condition not satisfies, directly jump left pointer to its correct place.
+
+    2. keep size of window constant to previous correct max (or min) size and shift left pointer on each step.
+    Start increaing it when it follow inner condition, till then before updating the answer check if window is correct or not.
+
+Note: These optimizations are mainly usedful when we have to maximize something not minimize and counting.
