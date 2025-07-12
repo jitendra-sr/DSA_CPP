@@ -38,3 +38,42 @@ class DFS_Solution {
         return false;
     }
 };
+
+class Kahn_Solution {
+  public:
+    bool isCyclic(int V, vector<vector<int>> &edges) {
+        vector<vector<int>> adj(V);
+        for(auto& it:edges){
+            adj[it[0]].push_back(it[1]);
+        }
+        
+        vector<int> inDegree(V,0);
+	    for(int i=0;i<V;i++) {
+	        for(int j:adj[i]) {
+	            inDegree[j]++;
+	        }
+	    }
+	    
+	    queue<int> q;
+        for (int i = 0; i < V; i++) {
+            if (inDegree[i] == 0) {
+                q.push(i);
+            }
+        }
+	    
+        int count=0;
+        while (!q.empty()) {
+            int node = q.front(); q.pop();
+            count++;
+
+            for (int nbr : adj[node]) {
+                inDegree[nbr]--;
+                if (inDegree[nbr] == 0) {
+                    q.push(nbr);
+                }
+            }
+        }
+        
+        return count!=V ;
+    }
+};
