@@ -1,0 +1,19 @@
+Shortest-Path in Graph
+    |
+    |-- Unweighted -> BFS                             O(V+E)        Greedy
+    |
+    |-- Non Negative Weighted -> Dijktra              O((V+E)logV)  Greedy
+    |
+    |-- Mix Weighted
+    '   |
+        |-- Acyclic -> TopoSort + Relaxation          O(V+E)        Greedy + DP
+        |
+        |-- Detects Negative Cycle -> Bellman-Ford    O(V*E)        DP
+        '                          -> Floyd-Warshall  O(V^3)
+                                      (MSSP Algorithm)
+                                      
+
+// In DAG, we need to relax all edges one time only as TopoSort ensures that all ancestors are processed and have the shortest distance as all paths that could affect it have already been processed. Also there is no cycle so no need to relax edges again.
+
+// In Bellman-Ford, we relax edges multiple times as we don't assume any ordering and shortest path to a node might depend on paths through multiple layers of other nodes. The shortest path to a vertex could have V-1 edges, therefore relaxation can happen only V-1 times. If we are able to relax on Vth pass then it means negative cycle.
+
