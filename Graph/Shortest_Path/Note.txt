@@ -9,11 +9,25 @@ Shortest-Path in Graph
         |-- Acyclic -> TopoSort + Relaxation          O(V+E)        Greedy + DP
         |
         |-- Detects Negative Cycle -> Bellman-Ford    O(V*E)        DP
-        '                          -> Floyd-Warshall  O(V^3)
+        '                          -> Floyd-Warshall  O(V^3)        DP
                                       (MSSP Algorithm)
                                       
 
 // In DAG, we need to relax all edges one time only as TopoSort ensures that all ancestors are processed and have the shortest distance as all paths that could affect it have already been processed. Also there is no cycle so no need to relax edges again.
 
-// In Bellman-Ford, we relax edges multiple times as we don't assume any ordering and shortest path to a node might depend on paths through multiple layers of other nodes. The shortest path to a vertex could have V-1 edges, therefore relaxation can happen only V-1 times. If we are able to relax on Vth pass then it means negative cycle.
+// Bellman-Ford
+We relax edges multiple times as we don't assume any ordering and shortest path to a node might depend on paths through multiple layers of other nodes. The shortest path to a vertex could have V-1 edges, therefore relaxation can happen only V-1 times. If we are able to relax on Vth pass then it means negative cycle.
+Intuition :
+Imagine you're spreading information (like shortest path estimates) from the source to all other vertices:
+Initially, only the source knows the truth (distance = 0).
+In the first wave, the source tells its neighbors how far they are.
+In the next wave, those neighbors tell their neighbors, and so on.
+After V-1 waves, the information is fully propagated across all possible paths without cycles.
+
+// Floyd Warshall
+We want the shortest path between every pair of vertices (i,j).
+Initially, the shortest path from i to j is just the direct edge weight if it exists, or Infinity if there is no direct edge. We try to relax all distances by using all nodes.
+Intuition :
+We allow all intermediate vertices one by one to check will the path become shorter? It uses the principle of Optimal Substructure.
+
 
