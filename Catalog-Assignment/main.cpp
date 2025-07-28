@@ -1,21 +1,15 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <map>
-#include <cmath>
-#include <vector>
-#include <algorithm>
-#include <unordered_map>
+#include <bits/stdc++.h>
 #include "json.hpp" // Include nlohmann/json
 
 using json = nlohmann::json;
 using namespace std;
 
-using Point = pair<long double, long double>;
+using ld=long double;
+using Point = pair<ld,ld>;
 
 // Convert from string with given base to decimal
-long double baseToDecimal(const string& value, int base) {
-    long double result = 0;
+ld baseToDecimal(const string& value, int base) {
+    ld result = 0;
     for (char c : value) {
         int digit;
         if (isdigit(c)) digit = c - '0';
@@ -39,7 +33,7 @@ vector<Point> parseJSON(const string& filename, int& k) {
         int x = stoi(el.key());
         int base = stoi(el.value()["base"].get<string>());
         string val = el.value()["value"];
-        long double y = baseToDecimal(val, base);
+        ld y = baseToDecimal(val, base);
         points.emplace_back(x, y);
     }
 
@@ -47,18 +41,18 @@ vector<Point> parseJSON(const string& filename, int& k) {
 }
 
 // Lagrange interpolation to get f(0) using k points
-long double lagrangeInterpolation(const vector<Point>& pts) {
-    long double secret = 0;
+ld lagrangeInterpolation(const vector<Point>& pts) {
+    ld secret = 0;
     int k = pts.size();
 
     for (int i = 0; i < k; ++i) {
-        long double xi = pts[i].first;
-        long double yi = pts[i].second;
+        ld xi = pts[i].first;
+        ld yi = pts[i].second;
 
-        long double li = 1;
+        ld li = 1;
         for (int j = 0; j < k; ++j) {
             if (i != j) {
-                long double xj = pts[j].first;
+                ld xj = pts[j].first;
                 li *= (0 - xj) / (xi - xj);
             }
         }
@@ -82,7 +76,7 @@ void findBestSecret(const vector<Point>& allPoints, int k, const string& label) 
         if (depth == k) {
             vector<Point> subset;
             for (int idx : comb) subset.push_back(allPoints[idx]);
-            long double s = lagrangeInterpolation(subset);
+            ld s = lagrangeInterpolation(subset);
             long long rounded = llround(s);
             freq[rounded]++;
             if (freq[rounded] > maxFreq) {
