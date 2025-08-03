@@ -4,7 +4,7 @@ using namespace std;
 // Time Complexity: O(V + E)
 // Space Complexity: O(V + E)
 
-class DFS_Solution {
+class DFS_Solution1 {
     bool dfs(int node, auto& adj, auto& vis, auto& dfsCall){
         vis[node]=true;
         dfsCall[node]=true;
@@ -35,6 +35,40 @@ class DFS_Solution {
             }
         }
         
+        return false;
+    }
+};
+
+class DFS_Solution2 {
+    bool dfs(int node, vector<vector<int>>& adj, vector<int>& state) {
+        state[node] = 1; // Visiting
+    
+        for (int neighbor : adj[node]) {
+            if (state[neighbor] == 0) {
+                bool res = dfs(neighbor, adj, state);
+                if(res) return true;
+            } 
+            // state[neighbour] == state[parent]
+            else if (state[neighbor] == 1) return true;
+        }
+    
+        state[node] = 2; // Visited
+        return false;
+    }   
+  public:
+    bool isCyclic(int V, vector<vector<int>> &edges) {
+        vector<vector<int>> adj(V);
+        for(auto& it:edges){
+            adj[it[0]].push_back(it[1]);
+        }
+        
+        vector<int> state(V, 0); // 0 = unvisited, 1 = visiting, 2 = visited
+        for (int i = 0; i < V; ++i) {
+            if (state[i] == 0) {
+                if (dfs(i, adj, state)) return true;
+            }
+        }
+
         return false;
     }
 };
