@@ -1,0 +1,12 @@
+Minimum Spanning Tree
+
+1. MST of a graph(N,E) is defined as a minimum cost (or weight) tree having N nodes and N-1 edges
+2. All nodes should be reachable by each other
+3. As it is a tree therefore there should be no cycle
+
+Algorithms to find MST
+1. Prim -> Heap based, good for Dense graphs (E close to V²).              O(E log V)
+2. Kruskal -> Disjoint-Set based, good for Sparse graphs (E close to V).   O(E log E)
+
+Both algorithms are Greedy.
+
