@@ -10,3 +10,27 @@ Algorithms to find MST
 
 Both algorithms are Greedy.
 
+Prim’s: 
+Works like “growing a tree” from a point
+When picking the next adjacent edge to adding to mst, Prim always chooses the minimum-weight edge that connects MST set to outside set.
+It avoids cycles by never adding a vertex twice or an edge to a vertex already in MST → relies on visited[].
+This guarantees we don’t create a back edge inside MST → no cycle.
+
+Kruskal’s: 
+Works like “merging trees.”
+Sorts all edges in non-decreasing weight order.
+Iterates over edges, picking the smallest one that does not form a cycle.
+It avoids cycles by checking set membership of vertices → relies on DSU.
+An edge (u, v) is added only if find(u) != find(v) (they’re in different sets).
+If find(u) == find(v), then u and v are already connected → adding this edge would form a cycle → skip it.
+
+Test Case:
+(0)--2--(1) (4)
+ |     /   / |
+ |    /  /   |
+ 1  1  2     1
+ | / /       |
+ |//         |
+(2)----2----(3) 
+
+Dry run on it to clarify between prim, dijkstra and cyle and kruskal.
