@@ -3,6 +3,10 @@
 
 // Note: height() will give no. of nodes in longest path
 // Actual height of Tree = No. of Nodes - 1
+
+// At a given node, the sum of left and right height equals to the diameter of that subtree considering given node as root or part of the diameter.
+// lh + rh == dia
+
 class Solution {
     int dia=0;
     int height(TreeNode* root){
