@@ -18,7 +18,7 @@ auto cmp = [](const vector<int>& a, const vector<int>& b) {
 sort(arr.begin(), arr.end(), cmp);
 
 // Lambda Function Syntax
-// [capture](parameters) -> return_type {
+// auto var = [capture] (parameters) mutable -> return_type {
 //     function_body
 // }
 // Capture Clause
@@ -26,8 +26,16 @@ sort(arr.begin(), arr.end(), cmp);
 // [=]	Capture all external variables by value
 // [&]	Capture all external variables by reference
 // [x]	Capture x by value which is constant inside the lambda
-// [x] mutable	Capture x by value but allow modification inside the lambda
 // [&x]	Capture x by reference
+// mutable allow modification of captured variables inside the lambda
+// [this, &] Capture this pointer and local variables by reference
+
+// A lambda is a Closure Type class object stored in a variable.
+// A lambda can be stored in a variable, IIFE, passed as an argument to a function, or returned from a function. It can also be used as a template parameter for STL containers and algorithms.
+
+// Lambda only capture variables that are used inside the lambda body not all. Also if a variable is declared after lambda, it is not captured.
+// Only variables and this (class pointer) can be captured. Other things like globals, static etc. are accessible without capture. Also this pointer is captured automatically without writing in capture clause if it is used inside lambda body.
+// A lambda can use class members (via this), functions and another lambda if it declared before or it is a class member. Variables are captured not the functions.
 ----------------------------------------------------------------------------------------------------------
 
 
